@@ -99,7 +99,7 @@ export default function CartPage() {
               Your cart is empty
             </h3>
             <p className="text-gray-500 mb-6">
-              Looks like you haven't added anything to your cart yet
+              Looks like you havent added anything to your cart yet
             </p>
             <Link href="/" className="bg-gradient-to-r from-green-600 to-green-600 text-white px-8 py-3 cursor-pointer rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               Start Shopping
