@@ -30,3 +30,36 @@ export async function POST(req) {
     return new Response(JSON.stringify({ error: "Server error" }), { status: 500 });
   }
 }
+
+export async function GET(req) {
+  try {
+    await dbConnect();
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get("userId");
+
+    if (!userId) {
+      return new Response(
+        JSON.stringify({ error: "User ID is required" }),
+        { status: 400 }
+      );
+    }
+
+    const user = await User.findById(userId).select("-password"); // exclude password
+    if (!user) {
+      return new Response(
+        JSON.stringify({ error: "User not found" }),
+        { status: 404 }
+      );
+    }
+
+    return new Response(
+      JSON.stringify({ user }),
+      { status: 200 }
+    );
+  } catch (err) {
+    return new Response(
+      JSON.stringify({ error: "Server error" }),
+      { status: 500 }
+    );
+  }
+}

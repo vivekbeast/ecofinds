@@ -71,6 +71,14 @@ const {  setAuth, userId } = useAuth();
                       <User size={16} className="text-white" />
                     </div>
                   </Link>
+
+                   <Link href="/register" 
+                  className="bg-green-500 hover:bg-green-600 text-white hidden md:flex px-4 py-2 rounded-lg transition-colors duration-200 text-sm"
+                //   onClick={toggleAuth}
+                >
+                  Sign In
+                </Link>
+                
                 </>
               ) : (
                 // Non-authenticated state - show sign in button
@@ -212,7 +220,7 @@ const {  setAuth, userId } = useAuth();
 
               {/* Bottom Actions */}
               <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 bg-white">
-                {isAuthenticated ? (
+                {!isAuthenticated ? (
                   <div className="space-y-2">
                     {/* <button className="w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700">
                       Settings
